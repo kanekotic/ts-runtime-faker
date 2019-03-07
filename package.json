@@ -1,0 +1,63 @@
+{
+  "name": "ts-runtime-faker",
+  "version": "0.0.1",
+  "description": "object faker generation based on typescript description",
+  "main": "dist/ts-runtime-faker.js",
+  "scripts": {
+    "prepare": "yarn build",
+    "build": "tsc",
+    "format": "prettier --write \"**/*.ts\" && tslint -p tsconfig.json --fix lib/**/*.ts -t verbose",
+    "lint": "tslint -p tsconfig.json",
+    "test": "yarn format && yarn lint && jest test",
+    "test:dev": "jest --watchAll test",
+    "test:cov": "jest --coverage && codecov",
+    "push": "yarn test && git push",
+    "deploy:major": "yarn version --major",
+    "deploy:minor": "yarn version --minor",
+    "deploy:patch": "yarn version --patch",
+    "deploy:push": "git push && git push --tags",
+    "preversion": "yarn test",
+    "conf": "yarn ts-jest config:init"
+  },
+  "keywords": [
+    "faker",
+    "typescript",
+    "ts-runtime",
+    "property",
+    "testing"
+  ],
+  "repository": "git@github.com:kanekotic/ts-runtime-faker.git",
+  "author": "kanekotic <alvarojosepl@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "faker": "4.1.0",
+    "ts-runtime": "0.2.0"
+  },
+  "devDependencies": {
+    "@types/faker": "4.1.5",
+    "@types/jest": "24.0.9",
+    "@types/node": "11.10.5",
+    "codecov": "3.2.0",
+    "faker": "4.1.0",
+    "jest": "24.1.0",
+    "prettier": "1.16.4",
+    "ts-jest": "24.0.0",
+    "tslib": "1.9.3",
+    "tslint": "5.13.1",
+    "tslint-config-prettier": "1.18.0",
+    "typescript": "3.3.3333"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "globals": {
+      "ts-jest": {
+        "compiler": "ts-runtime"
+      }
+    }
+  }
+}
